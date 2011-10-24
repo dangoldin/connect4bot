@@ -11,5 +11,3 @@ class strategy:
     
     def getBoard(self, board_json):
         return json.loads(board_json)
-    
-    
