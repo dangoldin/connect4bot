@@ -31,8 +31,8 @@ class genetic(strategy):
         self.strat_file = strat_file
         self.strat = compile(pickle.load(open(self.strat_file, 'rb')), "<string>", "eval")
     
-    def getMove(self, board_json):
-        board = self.getBoard(board_json)
+    def getMove(self, board):
+        #board = self.getBoard(board_json)
         
         col_scores = []
         for col in self.utils.getFreeCols(board):

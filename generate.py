@@ -18,13 +18,13 @@ def gp_add(a, b):
     return a + b
 def gp_sub(a, b):
     return a - b
-def gp_mul(a, b):
-    return a * b
-def gp_div(a, b):
-    if b == 0:
-        return a
-    else:
-        return a/b
+#def gp_mul(a, b):
+#    return a * b
+#def gp_div(a, b):
+#    if b == 0:
+#        return a
+#    else:
+#        return a/b
 def gp_igt(a, b, c, d):
     if a > b:
         return c
@@ -98,7 +98,7 @@ def save_best(gp_engine):
 
 def main_run():
     genome = GTree.GTreeGP()
-    genome.setParams(max_depth=4, method="ramped")
+    genome.setParams(max_depth=6, method="ramped")
     genome.evaluator += eval_func
     ga = GSimpleGA.GSimpleGA(genome)
     ga.setParams(gp_terminals = ['aps', 'apo', 'nlt'], #['aps', 'apo', 'eps', 'epo', 'nlt'],
@@ -107,7 +107,7 @@ def main_run():
     ga.setGenerations(20)
     ga.setCrossoverRate(1.0)
     ga.setMutationRate(0.25)
-    ga.setPopulationSize(500)
+    ga.setPopulationSize(20)
     ga.stepCallback.set(save_best)
     #csvfile_adapter = DBAdapters.DBFileCSV()
     #ga.setDBAdapter(csvfile_adapter)
