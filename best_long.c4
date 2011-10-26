@@ -1,0 +1,3 @@
+S'gp_sub(apo, gp_igt(gp_mul(gp_add(gp_add(nlto, nlto), gp_igt(nlts, gp_sub(aps, nlto), gp_igt(apo, nr, nlto, nlto), apo)), aps), gp_add(gp_add(gp_sub(nlto, aps), nr), gp_sub(apo, nlto)), gp_add(gp_sub(nr, nlto), gp_add(nlts, apo)), apo))'
+p0
+.

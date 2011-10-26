@@ -37,21 +37,39 @@ class c4:
        
 if __name__ == "__main__":
     #players = [ dumb.dumb(1), dumb.dumb(2) ]
-    players = [ dumb.dumb(1), genetic.genetic(2, 'best.c4') ]
+    #players = [ dumb.url(1,'http://dl.no.de/ai/twostep/move'), genetic.genetic(2, 'best.c4') ]
+    #players = [ dumb.url(1,'http://dl.no.de/ai/random/move'), genetic.genetic(2, 'best.c4') ]
+    #players = [ genetic.genetic(1, 'best.c4'), dumb.url(2,'http://dl.no.de/ai/random/move') ]
+    #players = [ genetic.genetic(1, 'best_so_far2.c4'), dumb.dumb(2) ]
+    #players = [ genetic.genetic(1, 'best_so_far2.c4'), dumb.url(2,'http://dl.no.de/ai/twostep/move') ]
+    players = [ genetic.genetic(1, 'best.c4'), dumb.url(2,'http://dl.no.de/ai/twostep/move') ]
     NUM_GAMES = 200
+    ROWS = 6
+    COLS = 7
 
     win_stats = defaultdict(int)
     for g in range(NUM_GAMES):
-        c = c4(rows=6,cols=7)
+        c = c4(rows=ROWS,cols=COLS)
         for i in range(c.rows * c.cols):
             #c.printBoard()
             winner = c.isWinner()
             if winner <> 0:
-                #print 'Player %d has won' % winner
+                print 'Player %d has won' % winner
+                #c.printBoard()
+                #exit()
                 break
             player = (i % 2)
-            board_json = c.getBoard(is_json=True)
-            column = players[player].getMove(board_json)
+            board = c.getBoard(is_json=False)
+            json_state = json.dumps( { "rows":ROWS,
+                                       "cols":COLS,
+                                       "board":board,
+                                       "currentTurn":player+1,
+                                       "moveNumber":i} )
+            column = players[player].getMoveJSON(json_state)
+            #print player, column
+            #if player == 1:
+            #    print 'Stats: ', column, c.utils.getStats(board, player+1, column)
             c.move(players[player].getPlayer(), column)
         win_stats[winner] += 1
-    print 'Win Stats: %s %f' % (str(win_stats), 1.0*win_stats[2]/NUM_GAMES)
+    print 'Win Stats: 1: %d, 2: %d, 0 %d - 1: %f, 2: %f' % \
+        (win_stats[1], win_stats[2], win_stats[0], (0.5*win_stats[0] + 1.0*win_stats[1])/NUM_GAMES, (0.5*win_stats[0]+1.0*win_stats[2])/NUM_GAMES)

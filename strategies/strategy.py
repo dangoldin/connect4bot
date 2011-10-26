@@ -9,5 +9,10 @@ class strategy:
     def getPlayer(self):
         return self.player
     
-    def getBoard(self, board_json):
-        return json.loads(board_json)
+    def getBoard(self, json_str):
+        data = json.loads(json_str)
+        return data['board']
+       
+    def getMoveJSON(self, json_str):
+        board = self.getBoard(json_str)
+        return self.getMove(board)
