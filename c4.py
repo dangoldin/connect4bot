@@ -42,8 +42,9 @@ if __name__ == "__main__":
     #players = [ genetic.genetic(1, 'best.c4'), dumb.url(2,'http://dl.no.de/ai/random/move') ]
     #players = [ genetic.genetic(1, 'best_so_far2.c4'), dumb.dumb(2) ]
     #players = [ genetic.genetic(1, 'best_so_far2.c4'), dumb.url(2,'http://dl.no.de/ai/twostep/move') ]
-    players = [ genetic.genetic(1, 'best.c4'), dumb.url(2,'http://dl.no.de/ai/twostep/move') ]
-    NUM_GAMES = 200
+    #players = [ genetic.genetic(1, 'best.c4'), dumb.url(2,'http://dl.no.de/ai/twostep/move') ]
+    players = [ genetic.genetic(1, 'best.c4'), dumb.dumb(1) ]
+    NUM_GAMES = 200 
     ROWS = 6
     COLS = 7
 

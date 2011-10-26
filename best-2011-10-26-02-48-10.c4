@@ -1,0 +1,3 @@
+S'gp_igt(gp_sub(gp_add(gp_add(const, apo), gp_sub(apo, const)), nr), const, nlto, nlto)'
+p0
+.
